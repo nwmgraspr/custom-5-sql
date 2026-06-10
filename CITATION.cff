@@ -21,8 +21,10 @@ authors:
     orcid: "https://orcid.org/0000-0001-6165-7389"
     affiliation: "Northwest Missouri State University, School of Computer Science and Information Systems, Maryville, MO, USA"
 
-repository-code: "https://github.com/denisecase/datafun-05-sql"
-url: "https://github.com/denisecase/datafun-05-sql"
+  - family-names: Massaquoi
+    given-names: Ralph
+repository-code: "https://github.com/nwmgraspr/datafun-05-sql"
+url: "https://github.com/nwmgraspr/datafun-05-sql"
 license: MIT
 
 abstract: >
