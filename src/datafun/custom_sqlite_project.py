@@ -43,26 +43,24 @@ def insert_data(conn):
     students = [
         (1, "Alice", "Computer Science"),
         (2, "Bob", "Mathematics"),
-        (3, "Charlie", "Physics")
+        (3, "Charlie", "Physics"),
     ]
 
-    courses = [
-        (1, "Database Systems"),
-        (2, "Calculus"),
-        (3, "Physics I")
-    ]
+    courses = [(1, "Database Systems"), (2, "Calculus"), (3, "Physics I")]
 
     enrollments = [
         (1, 1, 1, 95),
         (2, 1, 2, 88),
         (3, 2, 2, 92),
         (4, 3, 3, 85),
-        (5, 2, 1, 78)
+        (5, 2, 1, 78),
     ]
 
     cursor.executemany("INSERT OR REPLACE INTO students VALUES (?, ?, ?);", students)
     cursor.executemany("INSERT OR REPLACE INTO courses VALUES (?, ?);", courses)
-    cursor.executemany("INSERT OR REPLACE INTO enrollments VALUES (?, ?, ?, ?);", enrollments)
+    cursor.executemany(
+        "INSERT OR REPLACE INTO enrollments VALUES (?, ?, ?, ?);", enrollments
+    )
 
     conn.commit()
 
@@ -72,7 +70,7 @@ def query_student_summary(conn):
     cursor = conn.cursor()
 
     cursor.execute("""
-    SELECT 
+    SELECT
         s.name,
         s.major,
         COUNT(e.course_id) AS courses_taken,
@@ -90,7 +88,7 @@ def query_course_performance(conn):
     cursor = conn.cursor()
 
     cursor.execute("""
-    SELECT 
+    SELECT
         c.course_name,
         COUNT(e.student_id) AS total_students,
         ROUND(AVG(e.grade), 2) AS avg_course_grade
