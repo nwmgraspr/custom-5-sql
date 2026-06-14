@@ -111,7 +111,7 @@ def query_member_activity(conn):
     cursor = conn.cursor()
 
     cursor.execute("""
-    SELECT 
+    SELECT
         m.name,
         m.city,
         COUNT(l.loan_id) AS total_loans,
@@ -130,7 +130,7 @@ def query_book_popularity(conn):
     cursor = conn.cursor()
 
     cursor.execute("""
-    SELECT 
+    SELECT
         b.title,
         b.genre,
         COUNT(l.loan_id) AS times_borrowed,
