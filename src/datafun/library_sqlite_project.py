@@ -3,10 +3,12 @@
 Author: Ralph Massaquoi
 Date: 2026
 
+"""
 Purpose:
 - Read files into a SQLite database.
-- - Use Python to automate SQL scripts (stored in files).
+- Use Python to automate SQL scripts (stored in files).
 - Log the pipeline process.
+"""
 
 import sqlite3
 
@@ -51,7 +53,6 @@ def create_tables(conn):
 def insert_data(conn):
     cursor = conn.cursor()
 
-    # 12 MEMBERS
     members = [
         (1, "Alice", "Omaha"),
         (2, "Bob", "Lincoln"),
@@ -67,7 +68,6 @@ def insert_data(conn):
         (12, "Laura", "Atlanta")
     ]
 
-    # 12 BOOKS
     books = [
         (1, "1984", "Dystopian"),
         (2, "To Kill a Mockingbird", "Fiction"),
@@ -83,7 +83,6 @@ def insert_data(conn):
         (12, "Fahrenheit 451", "Dystopian")
     ]
 
-    # 12 LOANS
     loans = [
         (1, 1, 1, 7),
         (2, 2, 3, 5),
@@ -99,14 +98,19 @@ def insert_data(conn):
         (12, 12, 12, 14)
     ]
 
-    cursor.executemany("INSERT OR REPLACE INTO members VALUES (?, ?, ?);", members)
-    cursor.executemany("INSERT OR REPLACE INTO books VALUES (?, ?, ?);", books)
-    cursor.executemany("INSERT OR REPLACE INTO loans VALUES (?, ?, ?, ?);", loans)
+    cursor.executemany(
+        "INSERT OR REPLACE INTO members VALUES (?, ?, ?);", members
+    )
+    cursor.executemany(
+        "INSERT OR REPLACE INTO books VALUES (?, ?, ?);", books
+    )
+    cursor.executemany(
+        "INSERT OR REPLACE INTO loans VALUES (?, ?, ?, ?);", loans
+    )
 
     conn.commit()
 
 
-# 🔍 QUERY 1: Member borrowing summary
 def query_member_activity(conn):
     cursor = conn.cursor()
 
@@ -125,7 +129,6 @@ def query_member_activity(conn):
     return cursor.fetchall()
 
 
-# 🔍 QUERY 2: Book popularity
 def query_book_popularity(conn):
     cursor = conn.cursor()
 
