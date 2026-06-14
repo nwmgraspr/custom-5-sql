@@ -1,3 +1,14 @@
+"""custom_sqlite_project.py - Project script (example).
+
+Author: Ralph Massaquoi
+Date: 2026
+
+Purpose:
+- Read files into a SQLite database.
+- - Use Python to automate SQL scripts (stored in files).
+- Log the pipeline process.
+
+
 import sqlite3
 
 
@@ -81,8 +92,37 @@ def query_student_summary(conn):
     """)
 
     return cursor.fetchall()
+    
+# import logging
+import logging.config
 
+LOGGING_CONFIG = {
+    "version": 1,
+    "formatters": {
+        "default": {
+            "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+        }
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "default"
+        },
+        "file": {
+            "class": "logging.FileHandler",
+            "filename": "app.log",
+            "formatter": "default"
+        }
+    },
+    "root": {
+        "level": "DEBUG",
+        "handlers": ["console", "file"]
+    }
+}
 
+def setup_logging():
+    logging.config.dictConfig(LOGGING_CONFIG)
+        
 #  SQL QUERY 2: Course performance
 def query_course_performance(conn):
     cursor = conn.cursor()
