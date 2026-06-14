@@ -1,3 +1,14 @@
+"""custom_sqlite_project.py - Project script (example).
+
+Author: Ralph Massaquoi
+Date: 2026
+
+Purpose:
+- Read files into a SQLite database.
+- - Use Python to automate SQL scripts (stored in files).
+- Log the pipeline process.
+
+
 import sqlite3
 
 
